@@ -30,5 +30,14 @@ function App() {
   const handleLogout = () => {
     setIsAuthenticated(false);
   };
+
+  return (
+    <Router>
+      {/* Renderização Condicional */}
+      {isAuthenticated && <NavBar onLogout={handleLogout}/>}
+    </Router>
+
+    
+  );
 }
 export default App;
