@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import {
   BrowserRouter as Router,
-  Routers,
+  Routes,
   Route,
   Navigate,
 } from "react-router-dom";
@@ -34,10 +34,48 @@ function App() {
   return (
     <Router>
       {/* Renderização Condicional */}
-      {isAuthenticated && <NavBar onLogout={handleLogout}/>}
-    </Router>
+      {isAuthenticated && <NavBar onLogout={handleLogout} />}
+      <Routes>
+        <Route
+          path="/login"
+          element={
+            // Rota para a página de Login
+            isAuthenticated ? (
+              <Navigate to="/" />
+            ) : (
+              <Login onLogin={handleLogin} />
+            )
+          }
+        />
 
-    
+        <Route
+          path="/"
+          element={isAuthenticated ? <Home /> : <Navigate to="/login" />}
+        />
+
+        <Route
+          path="/cadastro"
+          element={
+            isAuthenticated ? (
+              <Cadastro contacts={contacts} setContacts={setContacts} />
+            ) : (<Navigate to="/login" />)
+          }
+        />
+
+        <Route 
+          path="/lista"
+          element= {
+            isAuthenticated ? (<Lista contacts={contacts} setContacts={setContacts} />) :
+            (<Navigate to="/login" />)
+          }
+        />
+
+        <Route 
+          path="*"
+          element= {<Navigate to="/login" />}
+        />
+      </Routes>
+    </Router>
   );
 }
 export default App;
