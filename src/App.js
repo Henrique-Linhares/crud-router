@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./App.css";
 import {
   BrowserRouter as Router,
   Routes,
@@ -14,6 +15,8 @@ import Cadastro from "./pages/Cadastro/Cadastro.js";
 
 // importação do NavBar (menu principal)
 import NavBar from "./components/NavBar/NavBar.js";
+
+
 
 function App() {
   // Estado global simples para login e contatos
