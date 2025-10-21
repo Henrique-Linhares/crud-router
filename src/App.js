@@ -12,6 +12,15 @@ import Login from "./pages/Login/Login.js";
 // importação do NavBar (menu principal)
 import NavBar from "./components/NavBar/NavBar.js";
 
+//Importação da página Lista
+import Lista from "./pages/Lista/Lista.js";
+
+//Importação da página Home
+import Home from "./pages/Home/Home.js";
+
+// Importação da página Cadastro
+import Cadastro from "./pages/Cadastro/Cadastro.js";
+
 function App() {
   // Estado global simples para login e contatos
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -58,22 +67,24 @@ function App() {
           element={
             isAuthenticated ? (
               <Cadastro contacts={contacts} setContacts={setContacts} />
-            ) : (<Navigate to="/login" />)
+            ) : (
+              <Navigate to="/login" />
+            )
           }
         />
 
-        <Route 
+        <Route
           path="/lista"
-          element= {
-            isAuthenticated ? (<Lista contacts={contacts} setContacts={setContacts} />) :
-            (<Navigate to="/login" />)
+          element={
+            isAuthenticated ? (
+              <Lista contacts={contacts} setContacts={setContacts} />
+            ) : (
+              <Navigate to="/login" />
+            )
           }
         />
 
-        <Route 
-          path="*"
-          element= {<Navigate to="/login" />}
-        />
+        <Route path="*" element={<Navigate to="/login" />} />
       </Routes>
     </Router>
   );
