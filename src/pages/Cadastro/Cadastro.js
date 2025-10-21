@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+// Import 'toast' from react-toastify
+import { toast } from 'react-toastify'; 
 import "./Cadastro.css";
 
 function Cadastro({contacts, setContacts}) {
@@ -8,6 +10,13 @@ function Cadastro({contacts, setContacts}) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        
+        // Basic validation (optional but recommended)
+        if (!name.trim() || !phone.trim()) {
+            toast.error('Por favor, preencha todos os campos!');
+            return; 
+        }
+
         const newContact = {id: Date.now(), name, phone};
         setContacts([...contacts, newContact]);
         setName("");
@@ -25,7 +34,7 @@ function Cadastro({contacts, setContacts}) {
                     onChange={(e) => setName(e.target.value)}
                 />
 
-                 <input 
+                <input 
                     type="text"
                     placeholder="Telefone:"
                     value={phone}

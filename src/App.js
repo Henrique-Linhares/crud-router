@@ -16,8 +16,6 @@ import Cadastro from "./pages/Cadastro/Cadastro.js";
 // importação do NavBar (menu principal)
 import NavBar from "./components/NavBar/NavBar.js";
 
-
-
 function App() {
   // Estado global simples para login e contatos
   const [isAuthenticated, setIsAuthenticated] = useState(false);
