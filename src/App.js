@@ -8,18 +8,12 @@ import {
 
 // Importação das páginas
 import Login from "./pages/Login/Login.js";
+import Lista from "./pages/Lista/Lista.js";
+import Home from "./pages/Home/Home.js";
+import Cadastro from "./pages/Cadastro/Cadastro.js";
 
 // importação do NavBar (menu principal)
 import NavBar from "./components/NavBar/NavBar.js";
-
-//Importação da página Lista
-import Lista from "./pages/Lista/Lista.js";
-
-//Importação da página Home
-import Home from "./pages/Home/Home.js";
-
-// Importação da página Cadastro
-import Cadastro from "./pages/Cadastro/Cadastro.js";
 
 function App() {
   // Estado global simples para login e contatos
