@@ -6,18 +6,29 @@ function Cadastro({contacts, setContacts}) {
     const [name, setName] = useState("");
     const [phone, setPhone] = useState("");
 
-    
+    const addContact = async () => {
+        try {
+            const response = await fetch("http://localhost:3000/users", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({
+                    name: name,
+                    phone: phone
+                })
+            });
+
+            const data = await response.json();
+            console.log("Contato Criado com Sucesso!", data);
+        } catch (error) {
+            console.error("Erro: Erro ao cadastrar o contato!", error);
+        }
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if (!name.trim() || !phone.trim()) {
             return; 
         }
-
-        const newContact = {id: Date.now(), name, phone};
-        setContacts([...contacts, newContact]);
-        setName("");
-        setPhone("");
     }
 
     return (
@@ -38,7 +49,7 @@ function Cadastro({contacts, setContacts}) {
                     onChange={(e) => setPhone(e.target.value)}
                 />
 
-                <button type="submit">Salvar</button>
+                <button type="submit" onClick={addContact}>Salvar</button>
             </form>
         </div>
     );
